@@ -4,11 +4,10 @@ readLines = fmap lines . readFile
 
 
 pt1 :: IO Int
-pt1 = do lines <- readLines "day-1.txt" 
-         let expenses = map expense lines
-         let sums = [(x,y) | x <- expenses, y <- expenses, x + y == 2020]
-         let (x,y) = head sums
-         return $ x*y
+pt1 = do input <- readLines "day-1.txt" 
+         let expenses = map read input :: [Int]
+         let result = [x*y | x <- expenses, y <- expenses, x + y == 2020]
+         return $ head result
 
 pt2 :: IO Int 
 pt2 = do lines <- readLines "day-1.txt" 
